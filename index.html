@@ -97,7 +97,7 @@
                     </div>
                 </div>
             </div>
-            <button class="btn-style">Book Now</button>
+            <button id="success" class="btn-style">Book Now</button>
         </div>
 
         <div class="booking-content">
@@ -159,7 +159,16 @@
                 const bookingCount = parseInt(bookingInput.value);
                 return bookingCount;
             };
-
+        
+            document.getElementById('success').addEventListener('click',function(){
+                const first_flight = document.getElementById('first-count').value;
+                const economy_flight = document.getElementById('economy-count').value;
+                const total_cost = document.getElementById('grand-total').innerText;
+                
+                alert('First Class :'+ first_flight + " "+ 
+                    'Economy Class :'+ economy_flight + " " +
+                    'Total :' + total_cost);
+            })
 
         </script>
 
