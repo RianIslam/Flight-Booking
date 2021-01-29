@@ -51,21 +51,22 @@
             <div class="input-group f-class">
                 <div>
                     <label for="">First Class ($<span id="first-total">150</span>)</label>
-                    <input id="first-count" class="inp-style inp-width" type="number" name="">
+                    <input id="first-count" class="inp-style inp-width" type="text" name="">
                 </div>
                 <div class="plus-minus-btn">
-                    <p><button onclick="bookingHandle(true)">+</button> <button
-                            onclick="bookingHandle(false)">-</button></p>
+                    <p><button onclick="bookingHandle('first',true)">+</button> <button
+                            onclick="bookingHandle('first',false)">-</button></p>
                 </div>
             </div>
 
             <div class="input-group f-class">
                 <div>
                     <label for="">Economy ($ <span id="economy-total">100</span>)</label>
-                    <input id="economy-count" class="inp-style inp-width" type="number" name="">
+                    <input id="economy-count" class="inp-style inp-width" type="text" name="">
                 </div>
                 <div class="plus-minus-btn">
-                    <p> <button onclick="bookingHandleEconomy(true)">+</button> <button onclick="bookingHandleEconomy(false)">-</button> </p>
+                    <p> <button onclick="bookingHandle('economy',true)">+</button> <button
+                            onclick="bookingHandle('economy',false)">-</button> </p>
                 </div>
             </div>
             <div class="calculations">
@@ -108,39 +109,73 @@
 
         <script>
 
-            function bookingHandleEconomy(isIncrease) {
-                const economyInput = document.getElementById('economy-count');
-                const economyCount = parseInt(economyInput.value);
-                // const firstNewCount = economyCount - 1;
-                let economyNewCount = economyCount;
+            function bookingHandle(flight,isIncrease) {
+                const bookingInput = document.getElementById(flight+'-count');
+                const bookingCount = parseInt(bookingInput.value);
+                // const firstNewCount = bookingCount - 1;
+                let bookingNewCount = bookingCount;
                 if (isIncrease == true) {
-                    economyNewCount = economyCount + 1;
+                    bookingNewCount = bookingCount + 1;
                 }
-                if (isIncrease == false && economyCount > 0) {
-                    economyNewCount = economyCount - 1;
+                if (isIncrease == false && bookingCount > 0) {
+                    bookingNewCount = bookingCount - 1;
                 }
-                economyInput.value = economyNewCount;
-                const economyTotal = economyNewCount * 100;
-                document.getElementById('economy-total').innerText = economyTotal;
+                bookingInput.value = bookingNewCount;
+                // const firstTotal = bookingNewCount * 150;
+
+                let bookingTotal = 0;
+                if(flight == 'first'){
+                    bookingTotal = bookingNewCount * 150;
+                }
+                if(flight == 'economy'){
+                    bookingTotal = bookingNewCount * 100;
+                }
+                document.getElementById(flight+'-total').innerText = bookingTotal;
             }
 
 
 
-            function bookingHandle(isIncrease) {
-                const firstInput = document.getElementById('first-count');
-                const firstCount = parseInt(firstInput.value);
-                // const firstNewCount = firstCount - 1;
-                let firstNewCount = firstCount;
-                if (isIncrease == true) {
-                    firstNewCount = firstCount + 1;
-                }
-                if (isIncrease == false && firstCount > 0) {
-                    firstNewCount = firstCount - 1;
-                }
-                firstInput.value = firstNewCount;
-                const firstTotal = firstNewCount * 150;
-                document.getElementById('first-total').innerText = firstTotal;
-            }
+
+
+
+
+
+
+
+
+            // function bookingHandleEconomy(isIncrease) {
+            //     const economyInput = document.getElementById('economy-count');
+            //     const economyCount = parseInt(economyInput.value);
+            //     // const bookingNewCount = economyCount - 1;
+            //     let economyNewCount = economyCount;
+            //     if (isIncrease == true) {
+            //         economyNewCount = economyCount + 1;
+            //     }
+            //     if (isIncrease == false && economyCount > 0) {
+            //         economyNewCount = economyCount - 1;
+            //     }
+            //     economyInput.value = economyNewCount;
+            //     const economyTotal = economyNewCount * 100;
+            //     document.getElementById('economy-total').innerText = economyTotal;
+            // }
+
+
+
+            // function bookingHandle(isIncrease) {
+            //     const firstInput = document.getElementById('first-count');
+            //     const firstCount = parseInt(firstInput.value);
+            //     // const firstNewCount = firstCount - 1;
+            //     let firstNewCount = firstCount;
+            //     if (isIncrease == true) {
+            //         firstNewCount = firstCount + 1;
+            //     }
+            //     if (isIncrease == false && firstCount > 0) {
+            //         firstNewCount = firstCount - 1;
+            //     }
+            //     firstInput.value = firstNewCount;
+            //     const firstTotal = firstNewCount * 150;
+            //     document.getElementById('first-total').innerText = firstTotal;
+            // }
 
 
 
