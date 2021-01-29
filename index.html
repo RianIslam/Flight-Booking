@@ -54,8 +54,8 @@
                     <input id="first-count" class="inp-style inp-width" type="text" name="">
                 </div>
                 <div class="plus-minus-btn">
-                    <p><button onclick="bookingHandle('first',true)">+</button> <button
-                            onclick="bookingHandle('first',false)">-</button></p>
+                    <p><button class="bookingBtn" onclick="bookingHandle('first',true)">+</button>
+                         <button class="bookingBtn" onclick="bookingHandle('first',false)">-</button></p>
                 </div>
             </div>
 
@@ -65,8 +65,8 @@
                     <input id="economy-count" class="inp-style inp-width" type="text" name="">
                 </div>
                 <div class="plus-minus-btn">
-                    <p> <button onclick="bookingHandle('economy',true)">+</button> <button
-                            onclick="bookingHandle('economy',false)">-</button> </p>
+                    <p> <button class="bookingBtn" onclick="bookingHandle('economy',true)">+</button> 
+                        <button class="bookingBtn" onclick="bookingHandle('economy',false)">-</button> </p>
                 </div>
             </div>
             <div class="calculations">
@@ -109,10 +109,12 @@
 
         <script>
 
+            //Flight booking Part
+
             function bookingHandle(flight, isIncrease) {
                 const bookingInput = document.getElementById(flight + '-count');
                 const bookingCount = parseInt(bookingInput.value);
-                // const firstNewCount = bookingCount - 1;
+                
                 let bookingNewCount = bookingCount;
                 if (isIncrease == true) {
                     bookingNewCount = bookingCount + 1;
@@ -121,7 +123,7 @@
                     bookingNewCount = bookingCount - 1;
                 }
                 bookingInput.value = bookingNewCount;
-                // const firstTotal = bookingNewCount * 150;
+                
 
                 let bookingTotal = 0;
                 if (flight == 'first') {
@@ -134,6 +136,8 @@
                 calculateTotal()
             }
 
+
+            //Calculate Part
 
             function calculateTotal() {
 
@@ -159,6 +163,12 @@
                 const bookingCount = parseInt(bookingInput.value);
                 return bookingCount;
             };
+
+
+            
+            
+            
+            // Confirm Massage Part
         
             document.getElementById('success').addEventListener('click',function(){
                 const first_flight = document.getElementById('first-count').value;
